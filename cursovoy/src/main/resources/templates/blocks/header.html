@@ -1,0 +1,23 @@
+<div th:fragment="header" xmlns:sec="http://www.w3.org/1999/xhtml">
+    <div class="container">
+        <div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
+            <a href="/blog" class="nav-link px-2 text-white">
+                <img th:src="@{/glav.png}" width="150" height="50" alt="">
+            </a>
+            <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0 ms-3">
+                <li><a href="/vakansy" class="fs-5 fw-bolder nav-link px-2 text-white ">Вакансии</a></li>
+                <li><a href="/resume" class="fs-5 fw-bolder nav-link px-2 text-white">Резюме</a></li>
+
+            </ul>
+            <div class="text-end login" sec:authorize="isAnonymous()">
+                <a href="/login" type="button" class="btn btn-outline-light me-2">Авторизация</a>
+                <a href="/registration" type="button" class="btn btn-warning">Регистрация</a>
+            </div>
+            <div class="text-end">
+                <a sec:authorize ="hasAnyAuthority('ADMIN')" href="/admin" type="button" class="admin btn btn-warning me-2">Админ-панель</a>
+                <a sec:authorize="isAuthenticated()" href="/logout" type="button" class="logout btn btn-outline-light me-2">Выйти</a>
+            </div>
+        </div>
+
+    </div>
+</div>
